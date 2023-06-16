@@ -1,0 +1,169 @@
+package com.mycompany.shoppingcarttrial5;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class ShoppingCartTrial5 {
+
+    public static void main(String[] args) {
+
+        List<Product> products = new ArrayList<>();
+
+        Scanner input = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("Welcome to the Shopping Cart");
+            System.out.println("===========================");
+            System.out.println("1. View Products");
+            System.out.println("2. Add Product");
+            System.out.println("3. Remove Product");
+            System.out.println("4. Exit");
+            System.out.print("Please select an option: ");
+            String choice = input.nextLine();
+
+            switch (choice) {
+                case "1":
+                    viewProducts();
+                    break;
+                case "2":
+                    addProduct(products);
+                    break;
+                case "3":
+                    removeProduct(products, input);
+                    break;
+                case "4":
+                    System.exit(0);
+                    break;
+
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    break;
+            }
+        }
+    }
+
+    public static void viewProducts() {
+        Scanner input = new Scanner(System.in);
+
+        int choice = 0;
+        while (choice != 8) {
+            System.out.println("Please select a category: ");
+            System.out.println("1. Men's Clothing ");
+            System.out.println("2. Women's Clothing ");
+            System.out.println("3. Infant Clothing ");
+            System.out.println("4. Kids Wear for Girls");
+            System.out.println("5. Kids Wear for Boys");
+            System.out.println("6. Home Merchandise ");
+            System.out.println("7. Gadget ");
+            System.out.println("8. Exit ");
+            choice = input.nextInt();
+
+            switch (choice) {
+                case 1:
+                    showMensClothing();
+                    break;
+                case 2:
+                    showWomensClothing();
+                    break;
+                case 3:
+                    showInfantClothing();
+                    break;
+                case 4:
+                    showKidsWearGirls();
+                    break;
+                case 5:
+                    showKidsWearBoys();
+                    break;
+                case 6:
+                    showHomeMerchandise();
+                    break;
+                case 7:
+                    showGadgets();
+                    break;
+                case 8:
+                    System.out.println("Thank you for shopping with us!");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    break;
+            }
+        }
+    }
+
+    public static void addProduct(List<Product> products) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Add Product:");
+        System.out.println("===========================");
+
+        System.out.print("Enter the name of the product: ");
+        String name = input.nextLine();
+
+        // Add other properties as needed
+
+        Product product = new Product(name);
+        products.add(product);
+
+        System.out.println("Product added successfully.");
+    }
+
+    public static void removeProduct(List<Product> products, Scanner input) {
+        System.out.println("Remove Product:");
+        System.out.println("===========================");
+
+        System.out.print("Enter the name of the product to remove: ");
+        String name = input.nextLine();
+
+        boolean removed = false;
+
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getName().equals(name)) {
+                products.remove(i);
+                removed = true;
+                break;
+            }
+        }
+
+        if (removed) {
+            System.out.println("Product removed successfully.");
+        } else {
+            System.out.println("Product not found.");
+        }
+    }
+
+    public static void showMensClothing() {
+    }
+
+    public static void showWomensClothing() {
+    }
+
+    public static void showInfantClothing() {
+    }
+
+    public static void showKidsWearGirls() {
+    }
+
+    public static void showKidsWearBoys() {
+    }
+
+    public static void showHomeMerchandise() {
+    }
+
+    public static void showGadgets() {
+    }
+
+    public static class Product {
+        private String name;
+
+        public Product(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        
+    }
+}  
